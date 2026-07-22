@@ -23,6 +23,7 @@ import {
 	shouldShowSeatActionControls,
 } from "./shared/humanTurnController.js";
 import { getSeatView, getTableView } from "./shared/syncViewModel.js";
+import { playTurnChime } from "./shared/turnChime.js";
 
 /* --------------------------------------------------------------------------------------------------
 Variables
@@ -94,6 +95,7 @@ const actionControls = createSeatActionControls({
 	sliderOutput: singleSliderOutput,
 	decrementButton: singleAmountDecrementButton,
 	incrementButton: singleAmountIncrementButton,
+	onNewTurn: () => playTurnChime(),
 });
 
 /* --------------------------------------------------------------------------------------------------

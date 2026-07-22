@@ -62,6 +62,7 @@ import {
 	getPlayerActionState,
 } from "./shared/actionModel.js";
 import { createHumanTurnController } from "./shared/humanTurnController.js";
+import { playTurnChime } from "./shared/turnChime.js";
 import {
 	buildPublicPlayerView,
 	buildSyncView,
@@ -2009,6 +2010,7 @@ const humanTurnController = createHumanTurnController({
 	actionPollInterval: ACTION_POLL_INTERVAL,
 	actionStep: CHIP_UNIT,
 	onControlsHidden: updateFastForwardButton,
+	onNewTurn: () => playTurnChime(),
 	setActiveTurnPlayer,
 	setPendingAction,
 	clearPendingAction,

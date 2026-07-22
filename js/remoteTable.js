@@ -23,6 +23,7 @@ import {
 	shouldShowSeatActionControls,
 } from "./shared/humanTurnController.js";
 import { getSeatView, getTableView } from "./shared/syncViewModel.js";
+import { playTurnChime } from "./shared/turnChime.js";
 import {
 	clearChipTransferAnimation,
 	clearRenderedSeat,
@@ -115,6 +116,7 @@ const actionControls = createSeatActionControls({
 	decrementButton: amountDecrementButton,
 	incrementButton: amountIncrementButton,
 	onActionError: () => setNotification("Action request failed."),
+	onNewTurn: () => playTurnChime(),
 });
 
 function setNotification(message) {
