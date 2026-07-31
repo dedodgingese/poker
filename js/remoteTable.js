@@ -23,7 +23,7 @@ import {
 	shouldShowSeatActionControls,
 } from "./shared/humanTurnController.js";
 import { getSeatView, getTableView } from "./shared/syncViewModel.js";
-import { playTurnChime } from "./shared/turnChime.js";
+import { initSound, initSoundButton, playTurnChime } from "./shared/sound.js";
 import {
 	clearChipTransferAnimation,
 	clearRenderedSeat,
@@ -58,6 +58,7 @@ const amountSlider = document.getElementById("amount-slider");
 const amountIncrementButton = document.getElementById("amount-increment-button");
 const sliderOutput = document.querySelector("output");
 const remoteSwitchLink = document.getElementById("remote-switch-link");
+const soundButton = document.getElementById("sound-button");
 const seatRefs = Array.from(document.querySelectorAll(".seat")).map((seatEl, seatSlot) => ({
 	seatSlot,
 	seatEl,
@@ -275,6 +276,8 @@ Bootstrap
 ---------------------------------------------------------------------------------------------------*/
 
 function init() {
+	initSound();
+	initSoundButton(soundButton);
 	document.addEventListener("visibilitychange", handleVisibilityChange);
 	actionControls.init();
 	configureViewSwitchLink(remoteSwitchLink, "hole-cards.html", tableId, seatIndexParam);
